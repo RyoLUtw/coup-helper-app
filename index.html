@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coup English Helper</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <button class="icon-button back-button hidden" type="button" aria-label="Go back">
+          <span aria-hidden="true">&larr;</span>
+        </button>
+        <div>
+          <p class="eyebrow">Classroom Coup</p>
+          <h1>Coup English Helper</h1>
+        </div>
+        <button class="icon-button settings-button" type="button" aria-label="Open settings">
+          <span aria-hidden="true">&#9881;</span>
+        </button>
+      </header>
+
+      <main id="app" class="screen" aria-live="polite"></main>
+    </div>
+
+    <dialog id="line-modal" class="modal">
+      <div class="modal-panel">
+        <div class="modal-header">
+          <div>
+            <p id="modal-kicker" class="eyebrow"></p>
+            <h2 id="modal-title"></h2>
+          </div>
+          <button class="icon-button close-modal" type="button" aria-label="Close dialog">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div id="modal-content" class="modal-content"></div>
+      </div>
+    </dialog>
+
+    <dialog id="settings-modal" class="modal">
+      <div class="modal-panel settings-panel">
+        <div class="modal-header">
+          <div>
+            <p class="eyebrow">Settings</p>
+            <h2>Practice Mode</h2>
+          </div>
+          <button class="icon-button close-settings" type="button" aria-label="Close settings">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <label class="toggle-row">
+          <span>
+            <strong>Test mode</strong>
+            <small>Useful vocabulary appears as first-letter blanks.</small>
+          </span>
+          <input id="test-mode" type="checkbox" role="switch">
+        </label>
+        <label class="toggle-row">
+          <span>
+            <strong>Show Chinese character name</strong>
+            <small>Adds Traditional Chinese names after character names.</small>
+          </span>
+          <input id="show-chinese" type="checkbox" role="switch">
+        </label>
+        <label class="toggle-row">
+          <span>
+            <strong>Show vocabulary translation</strong>
+            <small>Adds Traditional Chinese translations after useful vocabulary.</small>
+          </span>
+          <input id="show-vocab-translation" type="checkbox" role="switch">
+        </label>
+      </div>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>

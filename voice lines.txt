@@ -1,0 +1,1051 @@
+GENERAL CHALLENGE LINES
+
+These can be used when challenging any character claim.
+
+“I challenge that claim.”
+
+“I doubt you have that influence.”
+
+“Your story doesn’t sound convincing.”
+
+“I need evidence before I believe you.”
+
+“That claim seems suspicious.”
+
+“I’m willing to take the risk. Challenge!”
+
+GENERAL SUCCESSFUL-DEFENSE LINES
+
+These can be used after a player reveals that their challenged claim was true.
+
+“Your assumption was incorrect.”
+
+“Perhaps you judged too quickly.”
+
+“Next time, gather more evidence.”
+
+“Confidence is not the same as accuracy.”
+
+GENERAL VOCABULARY
+
+claim
+doubt
+convincing
+evidence
+suspicious
+risk
+assumption
+judge
+accuracy
+
+
+==================================================
+GENERAL PLAYER ACTIONS
+======================
+
+INCOME — TAKE 1 COIN
+
+“I’ll secure a little income.”
+
+“Every coin makes a difference.”
+
+“Slow and steady. I’ll build my resources.”
+
+“A modest income is better than nothing.”
+
+“I’ll strengthen my position, one coin at a time.”
+
+USEFUL VOCABULARY
+
+income
+secure
+make a difference
+makes a difference
+resource
+resources
+modest
+strengthen
+position
+
+==================================================
+FOREIGN AID — TAKE 2 COINS
+==========================
+
+“I could use some financial assistance.”
+
+“I’ll seek support from abroad.”
+
+“A little assistance would be greatly appreciated.”
+
+“I’m requesting additional support.”
+
+“Sometimes you need to rely on outside help.”
+
+USEFUL VOCABULARY
+
+financial
+assistance
+seek
+request
+support
+appreciate
+additional
+rely on
+outside help
+
+==================================================
+COUP — PAY 7 COINS
+==================
+
+“You’ve become too powerful. I’m taking action.”
+
+“Your influence ends here.”
+
+“I’ve made my decision. You’re my target.”
+
+“This situation requires decisive action.”
+
+“I can no longer tolerate your influence.”
+
+“Consider this a hostile takeover.”
+
+USEFUL VOCABULARY
+
+powerful
+take action
+influence
+situation
+target
+decisive
+tolerate
+hostile
+takeover
+
+==================================================
+FORCED COUP — PLAYER HAS 10 OR MORE COINS
+=========================================
+
+“I have no choice. It’s time to act.”
+
+“My options are limited. You’re my target.”
+
+“I’ve accumulated enough wealth. Time to use it.”
+
+“The rules leave me no alternative.”
+
+“I suppose diplomacy is no longer an option.”
+
+USEFUL VOCABULARY
+
+have no choice
+option
+limited
+accumulate
+accumulated
+alternative
+diplomacy
+
+==================================================
+DECLARING A TARGET
+==================
+
+“I’ve chosen my target.”
+
+“You’re the greatest threat right now.”
+
+“This isn’t personal. It’s strategic.”
+
+“You’re currently in the strongest position.”
+
+“I need to reduce your advantage.”
+
+“You’ve attracted too much attention.”
+
+USEFUL VOCABULARY
+
+target
+threat
+strategic
+currently
+position
+reduce
+advantage
+attract attention
+
+==================================================
+ACCEPTING AN ACTION
+===================
+
+“No objection.”
+
+“I’ll allow it.”
+
+“I have no reason to interfere.”
+
+“Proceed.”
+
+“I’ll let that happen.”
+
+“I’m willing to accept that.”
+
+USEFUL VOCABULARY
+
+objection
+allow
+interfere
+proceed
+accept
+
+==================================================
+BLOCKING AN ACTION
+==================
+
+“I won’t allow that.”
+
+“I’m going to interfere.”
+
+“That action stops here.”
+
+“I’m preventing that from happening.”
+
+“I’m afraid I have to object.”
+
+“That won’t be happening today.”
+
+USEFUL VOCABULARY
+
+allow
+interfere
+prevent
+object
+
+==================================================
+CHALLENGING ANY CLAIM
+=====================
+
+“I challenge that claim.”
+
+“I’m not convinced.”
+
+“That sounds suspicious.”
+
+“I have serious doubts about your claim.”
+
+“Show me the evidence.”
+
+“I think you’re bluffing.”
+
+“That claim is too convenient. I challenge you.”
+
+“I’m willing to take the risk.”
+
+USEFUL VOCABULARY
+
+challenge
+claim
+convince
+suspicious
+doubt
+evidence
+bluff
+convenient
+take a risk
+
+==================================================
+DECIDING NOT TO CHALLENGE
+=========================
+
+“I’ll give you the benefit of the doubt.”
+
+“I’m suspicious, but I won’t take the risk.”
+
+“I’ll accept your claim for now.”
+
+“I’m not convinced, but I’ll let it go.”
+
+“You may be bluffing, but I’m staying out of it.”
+
+USEFUL VOCABULARY
+
+give someone the benefit of the doubt
+suspicious
+take the risk
+for now
+let it go
+stay out of something
+
+==================================================
+SUCCESSFULLY DEFENDING A CHALLENGE
+==================================
+
+“Your assumption was incorrect.”
+
+“Perhaps you judged too quickly.”
+
+“Next time, gather more evidence.”
+
+“Confidence is not the same as accuracy.”
+
+“You should have trusted my claim.”
+
+“That accusation didn’t pay off.”
+
+USEFUL VOCABULARY
+
+assumption
+incorrect
+judge
+gather evidence
+confidence
+accuracy
+accusation
+pay off
+
+==================================================
+LOSING A CHALLENGE
+==================
+
+“I misjudged the situation.”
+
+“That was a costly assumption.”
+
+“I took the risk and paid the price.”
+
+“Apparently, my suspicion was wrong.”
+
+“I should have gathered more evidence.”
+
+“I stand corrected.”
+
+USEFUL VOCABULARY
+
+misjudge
+situation
+costly
+assumption
+pay the price
+apparently
+suspicion
+gather evidence
+stand corrected
+
+==================================================
+BEING CAUGHT BLUFFING
+=====================
+
+“Well, that didn’t go according to plan.”
+
+“My bluff has been exposed.”
+
+“I may have underestimated you.”
+
+“That was worth a try.”
+
+“I took a calculated risk. It failed.”
+
+“You saw right through me.”
+
+USEFUL VOCABULARY
+
+go according to plan
+bluff
+expose
+underestimate
+worth a try
+calculated risk
+see through someone
+
+
+==================================================
+LOSING AN INFLUENCE
+===================
+
+“That’s a serious setback.”
+
+“I can recover from this.”
+
+“My position just became much weaker.”
+
+“One influence down. I’m still in the game.”
+
+“That mistake came at a cost.”
+
+USEFUL VOCABULARY
+
+setback
+recover
+position
+influence
+at a cost
+
+==================================================
+ELIMINATING ANOTHER PLAYER
+==========================
+
+“One less threat to worry about.”
+
+“Your influence has come to an end.”
+
+“That significantly improves my position.”
+
+“Nothing personal. I’m here to survive.”
+
+“The competition just became a little easier.”
+
+USEFUL VOCABULARY
+
+threat
+come to an end
+significantly
+improve
+position
+survive
+competition
+
+==================================================
+BEING ELIMINATED
+================
+
+“My influence ends here.”
+
+“I’ve been eliminated. Good luck.”
+
+“That’s the end of my campaign.”
+
+“I took one risk too many.”
+
+“I clearly misjudged the situation.”
+
+“My plans have officially collapsed.”
+
+USEFUL VOCABULARY
+
+eliminate
+campaign
+one too many
+misjudge
+situation
+collapse
+
+==================================================
+REVEALING A CARD AFTER A SUCCESSFUL CHALLENGE DEFENSE
+=====================================================
+
+“There’s your evidence.”
+
+“Proof enough?”
+
+“My claim was genuine.”
+
+“It seems my credibility was justified.”
+
+“I believe this settles the argument.”
+
+USEFUL VOCABULARY
+
+evidence
+proof
+genuine
+credibility
+justify
+settle an argument
+
+==================================================
+DRAWING A REPLACEMENT CARD
+==========================
+
+“Time for a fresh identity.”
+
+“Let’s see what opportunity comes next.”
+
+“My position may have just changed.”
+
+“A new card means a new strategy.”
+
+“Time to adapt.”
+
+USEFUL VOCABULARY
+
+identity
+opportunity
+position
+strategy
+adapt
+
+
+
+==================================================
+DUKE
+
+ACTION: TAX
+
+“A little tax should increase my fortune.”
+
+“Prosperity comes at a price. Pay your tax!”
+
+“Wealth tends to accumulate at the top.”
+
+BLOCK: FOREIGN AID
+
+“No assistance without my approval.”
+
+“That aid request has been denied.”
+
+“You’ll have to manage without support.”
+
+WHEN SOMEONE CHALLENGES THE DUKE
+
+“Question my authority if you wish.”
+
+“You may regret that accusation.”
+
+“My position is more secure than you think.”
+
+CHALLENGING SOMEONE CLAIMING DUKE
+
+“Three coins? That claim sounds a little too convenient.”
+
+“I doubt you have the authority to collect that tax.”
+
+“That fortune looks suspicious. I challenge you.”
+
+USEFUL VOCABULARY
+
+prosperity
+increase
+fortune
+accumulate
+accumulated
+assistance
+request
+approval
+deny
+support
+authority
+accusation
+regret
+secure
+convenient
+suspicious
+
+==================================================
+ASSASSIN
+
+ACTION: ASSASSINATE
+
+“You’ve become a threat. I’ll deal with you.”
+
+“Every threat must be eliminated.”
+
+“Nothing personal. You’re simply a liability.”
+
+WHEN SOMEONE CHALLENGES THE ASSASSIN
+
+“Question my identity if you dare.”
+
+“Doubt can be a dangerous habit.”
+
+“You may regret that accusation.”
+
+CHALLENGING SOMEONE CLAIMING ASSASSIN
+
+“An assassin? Prove you’re really that dangerous.”
+
+“I think that threat is all talk.”
+
+“You’re bluffing. I challenge the assassination.”
+
+USEFUL VOCABULARY
+
+threat
+deal with
+eliminate
+liability
+identity
+doubt
+regret
+accusation
+bluff
+
+==================================================
+CAPTAIN
+
+ACTION: STEAL
+
+“I see an opportunity!”
+
+“I’ll seize the advantage!”
+
+“Your loss is my gain.”
+
+“Opportunity spotted. I’ll take advantage of it!”
+
+BLOCK: STEAL
+
+“Not from me.”
+
+“I won’t let you take advantage of me.”
+
+“Find yourself an easier target.”
+
+WHEN SOMEONE CHALLENGES THE CAPTAIN
+
+“You’re questioning my authority?”
+
+“Careful. That’s a risky accusation.”
+
+“Confidence is useful. Evidence is better.”
+
+CHALLENGING SOMEONE CLAIMING CAPTAIN
+
+“You call yourself a captain? I’m not convinced.”
+
+“That authority seems questionable.”
+
+“You’re taking advantage of us. Prove your claim.”
+
+CHALLENGING SOMEONE WHO BLOCKS YOUR STEAL
+
+“Convenient defense. I don’t believe you.”
+
+“That excuse sounds suspicious.”
+
+“You picked an interesting time to claim that influence. I challenge you.”
+
+USEFUL VOCABULARY
+
+opportunity
+seize
+advantage
+take advantage of
+target
+authority
+risky
+accusation
+confidence
+evidence
+convincing
+questionable
+convenient
+defense
+influence
+
+==================================================
+AMBASSADOR
+
+ACTION: EXCHANGE
+
+“This arrangement doesn’t suit me.”
+
+“Let’s negotiate a better arrangement.”
+
+“Perhaps there’s a more suitable option.”
+
+BLOCK: STEAL
+
+“That proposal is unacceptable.”
+
+“I’m afraid we have no agreement.”
+
+“Your request has been rejected.”
+
+WHEN SOMEONE CHALLENGES THE AMBASSADOR
+
+“Diplomacy requires a little trust.”
+
+“Are you sure you want to question my position?”
+
+“An accusation can damage a relationship.”
+
+CHALLENGING SOMEONE CLAIMING AMBASSADOR
+
+“An ambassador should be trustworthy. I have my doubts.”
+
+“That diplomatic status seems suspicious.”
+
+“I don’t believe you have the influence to negotiate that exchange.”
+
+USEFUL VOCABULARY
+
+arrangement
+suit
+negotiate
+suitable
+option
+proposal
+unacceptable
+agreement
+request
+reject
+diplomacy
+trust
+relationship
+influence
+status
+
+==================================================
+CONTESSA
+
+BLOCK: ASSASSINATION
+
+“Your attempt has failed. I’m still standing.”
+
+“I will not tolerate this attack!”
+
+“You seriously underestimated me.”
+
+WHEN SOMEONE CHALLENGES THE CONTESSA
+
+“You’re taking quite a risk.”
+
+“Think carefully before you accuse me.”
+
+“An assumption without evidence can be costly.”
+
+CHALLENGING SOMEONE CLAIMING CONTESSA
+
+“A convenient defense. I’m not buying it.”
+
+“You survived a little too easily.”
+
+“I doubt you have the protection you claim.”
+
+USEFUL VOCABULARY
+
+attempt
+fail
+tolerate
+underestimate
+risk
+accuse
+assumption
+evidence
+costly
+protection
+convenient
+
+==================================================
+INQUISITOR
+
+ACTION: EXCHANGE
+
+“Perhaps there’s a more suitable candidate.”
+
+“I’ll reconsider my options.”
+
+“This choice requires some adjustment.”
+
+ACTION: EXAMINE
+
+“Something seems suspicious. Let’s examine the evidence.”
+
+“I intend to determine what you’re hiding.”
+
+“A closer inspection should reveal the truth.”
+
+ACTION: FORCE AN EXCHANGE
+
+“This simply won’t do. Replace it.”
+
+“I’ve reached my conclusion. Make the exchange.”
+
+“Consider this a necessary adjustment.”
+
+BLOCK: STEAL
+
+“Your intentions are obvious.”
+
+“I’ve already anticipated that move.”
+
+“You’ll need a more convincing strategy.”
+
+WHEN SOMEONE CHALLENGES THE INQUISITOR
+
+“Investigation often makes people uncomfortable.”
+
+“You’re questioning my authority to investigate?”
+
+“Be careful what conclusions you draw.”
+
+CHALLENGING SOMEONE CLAIMING INQUISITOR
+
+“You seem curious, but are you really qualified to investigate?”
+
+“I question your authority to examine anything.”
+
+“That investigation seems suspicious. Prove your identity.”
+
+USEFUL VOCABULARY
+
+suitable
+candidate
+reconsider
+option
+adjustment
+suspicious
+examine
+evidence
+determine
+inspection
+reveal
+conclusion
+intention
+anticipate
+convincing
+strategy
+qualified
+investigate
+authority
+
+==================================================
+BUREAUCRAT
+
+ACTION: COOPERATION
+
+“Everyone benefits when everyone contributes.”
+
+“Everyone must contribute their fair share.”
+
+“Cooperation requires contribution.”
+
+WHEN GIVING A COIN TO ANOTHER PLAYER
+
+“Consider this my contribution.”
+
+“Resources should serve a purpose.”
+
+“A small contribution can maintain cooperation.”
+
+BLOCK: FOREIGN AID
+
+“Your application has been rejected.”
+
+“Assistance requires proper authorization.”
+
+“The request does not meet the requirements.”
+
+WHEN SOMEONE CHALLENGES THE BUREAUCRAT
+
+“Rules exist for a reason.”
+
+“Your objection has been noted.”
+
+“I suggest you reconsider that accusation.”
+
+CHALLENGING SOMEONE CLAIMING BUREAUCRAT
+
+“Since when did you have the authority to demand contributions?”
+
+“That regulation sounds completely invented.”
+
+“I question your right to collect anything.”
+
+USEFUL VOCABULARY
+
+benefit
+contribute
+fair share
+cooperation
+contribution
+resource
+resources
+purpose
+maintain
+application
+assistance
+request
+authorization
+requirement
+objection
+reconsider
+regulation
+authority
+
+==================================================
+SPECULATOR
+
+ACTION: GAMBLE
+
+“No risk, no reward. I’ll take my chances!”
+
+“Greater risk, greater potential reward!”
+
+“Fortune favors those willing to take risks.”
+
+WHEN THE GAMBLE SUCCEEDS
+
+“A calculated risk pays off.”
+
+“That investment produced a fine return.”
+
+“Sometimes uncertainty creates opportunity.”
+
+WHEN SOMEONE CHALLENGES THE SPECULATOR
+
+“You think I’ve miscalculated?”
+
+“Every investment involves uncertainty.”
+
+“Challenge accepted. Let’s see who judged the risk correctly.”
+
+CHALLENGING SOMEONE CLAIMING SPECULATOR
+
+“That confidence looks more like a bluff.”
+
+“You’re betting on a false claim. I challenge you.”
+
+“Let’s see whether that risk was calculated or reckless.”
+
+USEFUL VOCABULARY
+
+risk
+reward
+potential
+take one’s chances
+calculated risk
+pay off
+investment
+return
+uncertainty
+opportunity
+fortune
+miscalculate
+judge
+bluff
+reckless
+
+==================================================
+JESTER
+
+ACTION: DISORDER
+
+“Too predictable! Time for a little disorder.”
+
+“Predictable is boring. Let’s cause some disorder!”
+
+“A little uncertainty keeps things interesting.”
+
+WHEN MANIPULATING CARDS
+
+“Let’s rearrange things.”
+
+“Your situation could use some adjustment.”
+
+“Nothing is quite where you expected it to be.”
+
+BLOCK: STEAL OR DISORDER
+
+“Chaos has its limits.”
+
+“I create disorder. I don’t suffer from it.”
+
+“Nice attempt, but I know that trick.”
+
+WHEN SOMEONE CHALLENGES THE JESTER
+
+“You really think you understand what’s happening?”
+
+“Uncertainty makes people suspicious.”
+
+“You may have mistaken chaos for deception.”
+
+CHALLENGING SOMEONE CLAIMING JESTER
+
+“You’re causing chaos, but I doubt you’re the real Jester.”
+
+“That trick isn’t convincing me.”
+
+“Enough disorder. Prove your claim.”
+
+USEFUL VOCABULARY
+
+predictable
+disorder
+uncertainty
+rearrange
+situation
+adjustment
+expect
+chaos
+limit
+attempt
+suspicious
+deception
+convincing
+
+==================================================
+SOCIALIST
+
+ACTION: SHARE
+
+“Resources should be distributed equally!”
+
+“These resources could be distributed more fairly.”
+
+“If everyone contributes, everyone can benefit.”
+
+WHEN COLLECTING FROM PLAYERS
+
+“Everyone contributes something.”
+
+“A fair system requires participation.”
+
+“Consider it your contribution to society.”
+
+WHEN REDISTRIBUTING
+
+“Now we redistribute the resources.”
+
+“Let’s correct this imbalance.”
+
+“A more equal distribution seems appropriate.”
+
+BLOCK: STEAL
+
+“Individual greed harms the community.”
+
+“That’s not sharing. That’s exploitation.”
+
+“You don’t get to benefit at everyone else’s expense.”
+
+WHEN SOMEONE CHALLENGES THE SOCIALIST
+
+“Equality often makes the fortunate uncomfortable.”
+
+“You object to fair distribution?”
+
+“Perhaps your idea of fairness is different from mine.”
+
+CHALLENGING SOMEONE CLAIMING SOCIALIST
+
+“Sharing sounds noble. Your claim does not.”
+
+“I doubt you have the authority to redistribute anything.”
+
+“That sounds more like theft than equality. I challenge you.”
+
+USEFUL VOCABULARY
+
+resource
+resources
+distribute
+equally
+fairly
+contribute
+benefit
+participation
+society
+redistribute
+imbalance
+distribution
+appropriate
+individual
+greed
+community
+exploitation
+at someone’s expense
+equality
+fortunate
+object
+fairness
+authority
