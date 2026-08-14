@@ -1,0 +1,8 @@
+Let's add a shared device mode. Change the home page to select the mode: My Own Device / Shared Device
+In this mode, we show the voice line based on game-play flow.
+
+The app progress along the game, basing what to show next on what action has been taken. The app act like a text-based adventure game where players choose their actions and corresponding voice line appears for them to practice.
+
+1. current player in their turn chooses the action they want to perform (reuse the "My Turn" interface). Use collapsible container to categorize actions(There should be 2 layers for common actions and 3 layers for character specific actions. 
+2. When a player has chosen an action, use a modal to confirm selection and then show the corresponding voice lines. (reuse the voice line modal but showing the corresponding voice lines to the action selected). Show a button to proceed to next player choice. 
+3. the next player choose their reaction to the 
