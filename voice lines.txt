@@ -197,6 +197,28 @@ proceed
 accept
 
 ==================================================
+ACCEPTING WITHOUT A CHOICE
+==========================
+
+"I have no choice but to accept it."
+
+"The rules leave me no way to object."
+
+"There is nothing I can do about that."
+
+"I have to let that happen."
+
+"No response is available, so I accept."
+
+USEFUL VOCABULARY
+
+have no choice
+accept
+object
+available
+response
+
+==================================================
 BLOCKING AN ACTION
 ==================
 

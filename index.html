@@ -50,30 +50,60 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <label class="toggle-row">
-          <span>
-            <strong>Test mode</strong>
-            <small>Useful vocabulary appears as first-letter blanks.</small>
-          </span>
-          <input id="test-mode" type="checkbox" role="switch">
-        </label>
-        <label class="toggle-row">
-          <span>
-            <strong>Show Chinese character name</strong>
-            <small>Adds Traditional Chinese names after character names.</small>
-          </span>
-          <input id="show-chinese" type="checkbox" role="switch">
-        </label>
-        <label class="toggle-row">
-          <span>
-            <strong>Show vocabulary translation</strong>
-            <small>Adds Traditional Chinese translations after useful vocabulary.</small>
-          </span>
-          <input id="show-vocab-translation" type="checkbox" role="switch">
-        </label>
+        <div class="settings-content">
+          <label class="toggle-row">
+            <span>
+              <strong>Test mode</strong>
+              <small>Useful vocabulary appears as first-letter blanks.</small>
+            </span>
+            <input id="test-mode" type="checkbox" role="switch">
+          </label>
+          <label class="toggle-row">
+            <span>
+              <strong>Show Chinese character name</strong>
+              <small>Adds Traditional Chinese names after character names.</small>
+            </span>
+            <input id="show-chinese" type="checkbox" role="switch">
+          </label>
+          <label class="toggle-row">
+            <span>
+              <strong>Show vocabulary translation</strong>
+              <small>Adds Traditional Chinese translations after useful vocabulary.</small>
+            </span>
+            <input id="show-vocab-translation" type="checkbox" role="switch">
+          </label>
+          <details class="settings-section voice-layer-section">
+            <summary>
+              <span>
+                <span class="eyebrow" id="voice-layer-settings">Voice Line Layers</span>
+                <small>Choose which interaction layers show practice lines.</small>
+              </span>
+            </summary>
+            <div class="voice-layer-tools" aria-label="Voice line layer bulk actions">
+              <button class="secondary-button" type="button" data-voice-layer-select="all">Select all</button>
+              <button class="secondary-button" type="button" data-voice-layer-select="none">Deselect all</button>
+            </div>
+            <div id="voice-layer-options" class="settings-grid"></div>
+          </details>
+        </div>
       </div>
     </dialog>
 
-    <script src="app.js"></script>
+    <dialog id="shared-setup-modal" class="modal compact-modal">
+      <div class="modal-panel settings-panel">
+        <div class="modal-header">
+          <div>
+            <p class="eyebrow">Shared Device</p>
+            <h2>Players</h2>
+          </div>
+          <button class="icon-button close-shared-setup" type="button" aria-label="Close setup">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div id="shared-setup-content" class="modal-content"></div>
+      </div>
+    </dialog>
+
+    <script src="app.js?v=voice-layers-skip-hidden-20260818"></script>
   </body>
 </html>
