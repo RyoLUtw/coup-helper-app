@@ -331,6 +331,72 @@ const MIN_SHARED_PLAYERS = 2;
 const MAX_SHARED_PLAYERS = 10;
 const CHALLENGE_DEFENSE_PREFIX = "WHEN SOMEONE CHALLENGES THE ";
 const CHARACTER_ACTION_PREFIX = "ACTION:";
+const VOICE_LAYER_STORAGE_KEY = "coup-voice-line-layers-v2";
+const VOICE_LINE_LAYERS = [
+  {
+    id: "common-actions",
+    label: "Common actions",
+    description: "Income, Foreign Aid, Coup, and Forced Coup.",
+  },
+  {
+    id: "character-actions",
+    label: "Character actions",
+    description: "Character turn actions such as Tax, Assassinate, Steal, and Exchange.",
+  },
+  {
+    id: "target-declaration",
+    label: "Target declaration",
+    description: "Lines for naming the target of a targeted action.",
+  },
+  {
+    id: "normal-accept",
+    label: "Normal accept / pass",
+    description: "Voluntary accept and deciding not to challenge.",
+  },
+  {
+    id: "forced-accept",
+    label: "Forced accept",
+    description: "Accepting without a legal response.",
+  },
+  {
+    id: "initiate-challenge",
+    label: "Initiate challenge",
+    description: "Starting a challenge against a claim or block.",
+  },
+  {
+    id: "resolve-challenge",
+    label: "Resolve challenge",
+    description: "Proving, failing, revealing, and replacing after a challenge.",
+  },
+  {
+    id: "initiate-block",
+    label: "Initiate block",
+    description: "Blocking Foreign Aid, Steal, Disorder, or Assassination.",
+  },
+  {
+    id: "resolve-block",
+    label: "Resolve block",
+    description: "Accepting a block or moving into a block challenge.",
+  },
+  {
+    id: "influence-loss",
+    label: "Influence loss / elimination",
+    description: "Losing influence, losing a challenge, and being eliminated.",
+  },
+  {
+    id: "successful-elimination",
+    label: "Successful elimination",
+    description: "Lines for the player who eliminated someone.",
+  },
+  {
+    id: "action-follow-up",
+    label: "Action follow-up result",
+    description: "Secondary action results like giving a coin or redistributing.",
+  },
+];
+const COMMON_ACTION_TITLES = new Set(MY_TURN_GENERAL.map((action) => action.source));
+const VOICE_LINE_LAYER_IDS = VOICE_LINE_LAYERS.map((layer) => layer.id);
+const DEFAULT_VISIBLE_VOICE_LAYER_IDS = new Set(["common-actions", "character-actions"]);
 
 const state = {
   data: null,
@@ -338,6 +404,7 @@ const state = {
   testMode: localStorage.getItem("coup-test-mode") === "true",
   showChineseNames: localStorage.getItem("coup-show-chinese-names") !== "false",
   showVocabTranslations: localStorage.getItem("coup-show-vocab-translations") !== "false",
+  visibleVoiceLayers: loadVisibleVoiceLayers(),
   linePools: loadLinePools(),
   shared: createSharedState(),
 };
@@ -353,6 +420,7 @@ const modalKicker = document.querySelector("#modal-kicker");
 const modalContent = document.querySelector("#modal-content");
 const showChineseInput = document.querySelector("#show-chinese");
 const showVocabTranslationInput = document.querySelector("#show-vocab-translation");
+const voiceLayerOptions = document.querySelector("#voice-layer-options");
 const sharedSetupModal = document.querySelector("#shared-setup-modal");
 const sharedSetupContent = document.querySelector("#shared-setup-content");
 
@@ -362,6 +430,7 @@ async function init() {
   testModeInput.checked = state.testMode;
   showChineseInput.checked = state.showChineseNames;
   showVocabTranslationInput.checked = state.showVocabTranslations;
+  renderVoiceLayerSettings();
   bindShellEvents();
 
   try {
@@ -403,6 +472,20 @@ function bindShellEvents() {
     if (modal.open) redrawOpenModal();
   });
 
+  voiceLayerOptions.addEventListener("change", (event) => {
+    const input = event.target.closest("[data-voice-layer]");
+    if (!input) return;
+    state.visibleVoiceLayers[input.dataset.voiceLayer] = input.checked;
+    saveVisibleVoiceLayers();
+    if (modal.open) redrawOpenModal();
+  });
+
+  settingsModal.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-voice-layer-select]");
+    if (!button) return;
+    setAllVoiceLayersVisible(button.dataset.voiceLayerSelect === "all");
+  });
+
   modal.addEventListener("click", (event) => {
     if (event.target === modal) modal.close();
   });
@@ -414,6 +497,29 @@ function bindShellEvents() {
   sharedSetupModal.addEventListener("click", (event) => {
     if (event.target === sharedSetupModal) sharedSetupModal.close();
   });
+}
+
+function renderVoiceLayerSettings() {
+  voiceLayerOptions.innerHTML = VOICE_LINE_LAYERS.map((layer) => `
+    <label class="layer-toggle">
+      <span>
+        <strong>${escapeHtml(layer.label)}</strong>
+        <small>${escapeHtml(layer.description)}</small>
+      </span>
+      <input type="checkbox" role="switch" data-voice-layer="${escapeHtml(layer.id)}" ${isVoiceLayerVisible(layer.id) ? "checked" : ""}>
+    </label>
+  `).join("");
+}
+
+function setAllVoiceLayersVisible(visible) {
+  VOICE_LINE_LAYER_IDS.forEach((id) => {
+    state.visibleVoiceLayers[id] = visible;
+  });
+  voiceLayerOptions.querySelectorAll("[data-voice-layer]").forEach((input) => {
+    input.checked = visible;
+  });
+  saveVisibleVoiceLayers();
+  if (modal.open) redrawOpenModal();
 }
 
 function render() {
@@ -584,7 +690,7 @@ function renderSharedDevice() {
 
   if (shared.phase === "reaction") {
     const responder = shared.players[shared.reactionOrder[shared.reactionIndex]];
-    const options = getReactionOptions(shared.action);
+    const options = getReactionOptions(shared.action, responder);
     if (isAcceptOnlyReaction(options)) {
       presentSharedReactionOrAutoAccept();
       return;
@@ -593,7 +699,7 @@ function renderSharedDevice() {
       <section class="shared-status">
         <p class="eyebrow">Reaction</p>
         <h2>${escapeHtml(responder.name)} responds to ${escapeHtml(currentPlayer.name)}</h2>
-        <p>${escapeHtml(currentPlayer.name)} chose ${escapeHtml(shared.action.label)}.</p>
+        <p>${escapeHtml(getSharedActionSummary())}</p>
       </section>
       <section class="reaction-panel" aria-label="Possible reactions">
         ${options.map((option) => actionButton(option.label, option.id, option.subline || "")).join("")}
@@ -718,6 +824,7 @@ function createSharedState() {
     reactionOrder: [],
     reactionIndex: 0,
     forcedAcceptShownForAction: false,
+    pendingTargetPlayerId: null,
   };
 }
 
@@ -772,6 +879,10 @@ function renderSharedSetupModal() {
 }
 
 function openSharedActionConfirm(action) {
+  const targetOptions = getSharedTargetOptions();
+  const needsTarget = action.requiresTarget || action.eliminatesTarget;
+  state.shared.pendingTargetPlayerId = needsTarget ? targetOptions[0]?.id || null : null;
+  modalContent.dataset.selectedTargetPlayer = state.shared.pendingTargetPlayerId || "";
   modal.dataset.currentTitle = action.label;
   modal.dataset.currentKicker = `${currentSharedPlayer().name}'s turn`;
   modal.dataset.currentGroups = JSON.stringify(action.groups);
@@ -783,28 +894,63 @@ function openSharedActionConfirm(action) {
       <strong>${escapeHtml(action.label)}</strong>
       ${action.subline ? `<small>${escapeHtml(action.subline)}</small>` : ""}
     </div>
+    ${needsTarget ? `
+      <div class="target-picker" aria-label="Choose target">
+        <p class="eyebrow">Target</p>
+        <div class="target-grid">
+          ${targetOptions.map((player) => `
+            <button class="target-option ${player.id === state.shared.pendingTargetPlayerId ? "selected" : ""}" type="button" data-target-player="${player.id}">
+              ${escapeHtml(player.name)}
+            </button>
+          `).join("")}
+        </div>
+      </div>
+    ` : ""}
     <div class="modal-actions">
       <button class="secondary-button" type="button" data-cancel-confirm>Change action</button>
       <button class="primary-button" type="button" data-confirm-action>Show voice lines</button>
     </div>
   `;
   modalContent.querySelector("[data-cancel-confirm]").addEventListener("click", () => modal.close());
+  modalContent.querySelectorAll("[data-target-player]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.shared.pendingTargetPlayerId = Number(button.dataset.targetPlayer);
+      modalContent.dataset.selectedTargetPlayer = button.dataset.targetPlayer;
+      modalContent.querySelectorAll("[data-target-player]").forEach((targetButton) => {
+        targetButton.classList.toggle("selected", targetButton === button);
+      });
+    });
+  });
   modalContent.querySelector("[data-confirm-action]").addEventListener("click", () => {
-    state.shared.action = action;
+    const selectedTargetId = Number(modalContent.dataset.selectedTargetPlayer || state.shared.pendingTargetPlayerId);
+    if (needsTarget && !selectedTargetId) return;
+    state.shared.action = {
+      ...action,
+      targetPlayerId: needsTarget ? selectedTargetId : null,
+    };
     openSharedLineModal(action.label, `${currentSharedPlayer().name}'s turn`, action.groups, "Next player choice", startSharedReactions);
   });
   modal.showModal();
 }
 
 function openSharedLineModal(title, kicker, groups, nextLabel, nextHandler) {
+  const visibleGroups = getVisibleLineGroups(groups);
+  if (!visibleGroups.length) {
+    if (modal.open) modal.close();
+    nextHandler();
+    return;
+  }
+
   modal.dataset.currentTitle = title;
   modal.dataset.currentKicker = kicker;
   modal.dataset.currentGroups = JSON.stringify(groups);
+  modal.dataset.currentNextLabel = nextLabel;
+  modal._sharedNextHandler = nextHandler;
   modalTitle.textContent = title;
   modalKicker.textContent = kicker;
-  const shouldOpenOnlyGroup = groups.length === 1;
+  const shouldOpenOnlyGroup = visibleGroups.length === 1;
   modalContent.innerHTML = `
-    ${groups.length ? groups.map((group) => renderLineGroup(group, shouldOpenOnlyGroup)).join("") : `<div class="empty-state">No voice lines found for this option.</div>`}
+    ${visibleGroups.map((group) => renderLineGroup(group, shouldOpenOnlyGroup)).join("")}
     <div class="modal-actions sticky-actions">
       <button class="primary-button" type="button" data-shared-next>${escapeHtml(nextLabel)}</button>
     </div>
@@ -818,10 +964,16 @@ function openSharedLineModal(title, kicker, groups, nextLabel, nextHandler) {
 
 function startSharedReactions() {
   const shared = state.shared;
-  shared.reactionOrder = shared.players
+  const targetPlayerId = shared.action?.targetPlayerId;
+  const activeResponders = shared.players
     .map((player, index) => ({ player, index }))
-    .filter(({ player, index }) => index !== shared.currentPlayerIndex && !player.eliminated)
-    .map(({ index }) => index);
+    .filter(({ player, index }) => index !== shared.currentPlayerIndex && !player.eliminated);
+  const targetResponder = activeResponders.find(({ player }) => player.id === targetPlayerId);
+  const nonTargetResponders = activeResponders.filter(({ player }) => player.id !== targetPlayerId);
+  shared.reactionOrder = [
+    ...(targetResponder ? [targetResponder.index] : []),
+    ...nonTargetResponders.map(({ index }) => index),
+  ];
   shared.reactionIndex = 0;
   presentSharedReactionOrAutoAccept();
 }
@@ -830,7 +982,7 @@ function handleSharedReaction(option, responder) {
   const action = state.shared.action;
 
   if (option.type === "accept") {
-    const isForcedAccept = action.eliminatesTarget;
+    const isForcedAccept = action.eliminatesTarget && isSharedActionTarget(responder);
     openSharedLineModal(
       isForcedAccept ? "Forced accept" : "Accept the action",
       responder.name,
@@ -883,7 +1035,7 @@ function renderBlockResponse(blockOption, blocker) {
   `;
 
   app.querySelector(`[data-open="accept-block"]`).addEventListener("click", () => {
-    openSharedLineModal("Accept the block", currentPlayer.name, [state.data.general["DECIDING NOT TO CHALLENGE"]].filter(Boolean), "Start next turn", startNextSharedTurn);
+    openSharedLineModal("Accept the block", currentPlayer.name, [withVoiceLayer(state.data.general["DECIDING NOT TO CHALLENGE"], "resolve-block")].filter(Boolean), "Start next turn", startNextSharedTurn);
   });
 
   app.querySelector(`[data-open="challenge-block"]`).addEventListener("click", () => {
@@ -1032,10 +1184,14 @@ function presentSharedReactionOrAutoAccept() {
   }
 
   const responder = shared.players[shared.reactionOrder[shared.reactionIndex]];
-  const options = getReactionOptions(shared.action);
+  const options = getReactionOptions(shared.action, responder);
+  if (!options.length) {
+    advanceSharedReaction();
+    return;
+  }
   if (isAcceptOnlyReaction(options)) {
     const nextLabel = shared.reactionIndex + 1 >= shared.reactionOrder.length ? "Continue" : "Next reaction";
-    const isForcedAccept = shared.action.eliminatesTarget;
+    const isForcedAccept = shared.action.eliminatesTarget && isSharedActionTarget(responder);
     openSharedLineModal(
       isForcedAccept ? "Forced accept" : "Must accept",
       responder.name,
@@ -1066,6 +1222,7 @@ function startNextSharedTurn() {
   state.shared.reactionOrder = [];
   state.shared.reactionIndex = 0;
   state.shared.forcedAcceptShownForAction = false;
+  state.shared.pendingTargetPlayerId = null;
   render();
 }
 
@@ -1075,9 +1232,28 @@ function currentSharedPlayer() {
 
 function currentSharedTargetPlayer() {
   const shared = state.shared;
+  const selectedTarget = shared.players.find((player) => player.id === shared.action?.targetPlayerId && !player.eliminated);
+  if (selectedTarget) return selectedTarget;
+
   const nextPlayerIndex = nextActivePlayerIndex(shared.currentPlayerIndex);
   const reactionTargetIndex = shared.reactionOrder.find((index) => !shared.players[index]?.eliminated) ?? nextPlayerIndex;
   return shared.players[reactionTargetIndex] || shared.players[nextPlayerIndex];
+}
+
+function getSharedTargetOptions() {
+  const currentPlayer = currentSharedPlayer();
+  return state.shared.players.filter((player) => player.id !== currentPlayer.id && !player.eliminated);
+}
+
+function isSharedActionTarget(player) {
+  return Boolean(player && state.shared.action?.targetPlayerId === player.id);
+}
+
+function getSharedActionSummary() {
+  const currentPlayer = currentSharedPlayer();
+  const target = currentSharedTargetPlayer();
+  const base = `${currentPlayer.name} chose ${state.shared.action.label}`;
+  return state.shared.action?.targetPlayerId && target ? `${base} targeting ${target.name}.` : `${base}.`;
 }
 
 function activeSharedPlayers() {
@@ -1118,6 +1294,7 @@ function createSharedGeneralAction(action) {
     source: action.source,
     claimCharacter: null,
     eliminatesTarget: Boolean(action.eliminatesTarget),
+    requiresTarget: Boolean(action.eliminatesTarget),
     groups: groups.filter(Boolean),
   };
 }
@@ -1134,6 +1311,7 @@ function createSharedCharacterAction(name, turnAction) {
     source: turnAction.primary.title,
     claimCharacter: name,
     eliminatesTarget: Boolean(ELIMINATES_PLAYER[name]),
+    requiresTarget: Boolean(TARGET_REQUIRED[name]),
     groups: groups.filter(Boolean),
   };
 }
@@ -1169,25 +1347,29 @@ function isTurnActionSupplement(category) {
     && !category.title.startsWith("WHEN SOMEONE ");
 }
 
-function getReactionOptions(action) {
+function getReactionOptions(action, responder = null) {
   if (!action) return [];
+  const responderIsTarget = isSharedActionTarget(responder);
+  const targetOnlyAction = action.eliminatesTarget && action.targetPlayerId;
 
   const options = [
     {
       id: "reaction-accept",
       type: "accept",
-      label: action.eliminatesTarget ? "Forced accept" : "Accept",
-      subline: action.eliminatesTarget ? "No block or challenge is used." : "Let the original action continue.",
+      label: action.eliminatesTarget && responderIsTarget ? "Forced accept" : "Accept",
+      subline: action.eliminatesTarget && responderIsTarget ? "No block or challenge is used." : "Let the original action continue.",
     },
   ];
 
-  getBlockOptionsForAction(action).forEach((blockOption, index) => {
-    options.push({
-      ...blockOption,
-      id: `reaction-block-${index}`,
-      type: "block",
+  if (!targetOnlyAction || responderIsTarget) {
+    getBlockOptionsForAction(action).forEach((blockOption, index) => {
+      options.push({
+        ...blockOption,
+        id: `reaction-block-${index}`,
+        type: "block",
+      });
     });
-  });
+  }
 
   if (action.claimCharacter) {
     options.push({
@@ -1198,6 +1380,7 @@ function getReactionOptions(action) {
     });
   }
 
+  if (targetOnlyAction && !responderIsTarget && !action.claimCharacter) return [];
   return options;
 }
 
@@ -1288,22 +1471,79 @@ function getClaimChallengeCharacters() {
 }
 
 function openLineModal(title, kicker, groups) {
+  const visibleGroups = getVisibleLineGroups(groups);
+  if (!visibleGroups.length) return;
+
   modal.dataset.currentTitle = title;
   modal.dataset.currentKicker = kicker;
   modal.dataset.currentGroups = JSON.stringify(groups);
+  delete modal.dataset.currentNextLabel;
+  modal._sharedNextHandler = null;
   modalTitle.textContent = title;
   modalKicker.textContent = kicker;
-  const shouldOpenOnlyGroup = groups.length === 1;
-  modalContent.innerHTML = groups.length
-    ? groups.map((group) => renderLineGroup(group, shouldOpenOnlyGroup)).join("")
-    : `<div class="empty-state">No voice lines found for this option.</div>`;
+  const shouldOpenOnlyGroup = visibleGroups.length === 1;
+  modalContent.innerHTML = visibleGroups.map((group) => renderLineGroup(group, shouldOpenOnlyGroup)).join("");
   modal.showModal();
 }
 
 function redrawOpenModal() {
   const groups = JSON.parse(modal.dataset.currentGroups || "[]");
-  const shouldOpenOnlyGroup = groups.length === 1;
-  modalContent.innerHTML = groups.map((group) => renderLineGroup(group, shouldOpenOnlyGroup)).join("");
+  const visibleGroups = getVisibleLineGroups(groups);
+  if (!visibleGroups.length) {
+    const nextHandler = modal._sharedNextHandler;
+    modal.close();
+    if (nextHandler) nextHandler();
+    return;
+  }
+
+  const shouldOpenOnlyGroup = visibleGroups.length === 1;
+  const nextLabel = modal.dataset.currentNextLabel;
+  modalContent.innerHTML = `
+    ${visibleGroups.map((group) => renderLineGroup(group, shouldOpenOnlyGroup)).join("")}
+    ${nextLabel ? `<div class="modal-actions sticky-actions"><button class="primary-button" type="button" data-shared-next>${escapeHtml(nextLabel)}</button></div>` : ""}
+  `;
+  modalContent.querySelector("[data-shared-next]")?.addEventListener("click", () => {
+    modal.close();
+    modal._sharedNextHandler?.();
+  });
+}
+
+function getVisibleLineGroups(groups) {
+  return groups.filter((group) => group && isVoiceLayerVisible(getVoiceLayerForGroup(group)));
+}
+
+function isVoiceLayerVisible(layerId) {
+  return state.visibleVoiceLayers[layerId] !== false;
+}
+
+function getVoiceLayerForGroup(group) {
+  if (group?.layerId) return group.layerId;
+  const title = group?.title || "";
+
+  if (COMMON_ACTION_TITLES.has(title)) return "common-actions";
+  if (title === "DECLARING A TARGET") return "target-declaration";
+  if (title === "ACCEPTING WITHOUT A CHOICE") return "forced-accept";
+  if (["ACCEPTING AN ACTION", "DECIDING NOT TO CHALLENGE"].includes(title)) return "normal-accept";
+  if (title === "CHALLENGING ANY CLAIM" || title.startsWith("CHALLENGING ")) return "initiate-challenge";
+  if (title === "BLOCKING AN ACTION" || title.startsWith("BLOCK:")) return "initiate-block";
+  if (title.startsWith("ACTION:")) return "character-actions";
+  if ([
+    "SUCCESSFULLY DEFENDING A CHALLENGE",
+    "BEING CAUGHT BLUFFING",
+    "REVEALING A CARD AFTER A SUCCESSFUL CHALLENGE DEFENSE",
+    "DRAWING A REPLACEMENT CARD",
+  ].includes(title) || title.startsWith(CHALLENGE_DEFENSE_PREFIX)) {
+    return "resolve-challenge";
+  }
+  if (["LOSING A CHALLENGE", "LOSING AN INFLUENCE", "BEING ELIMINATED"].includes(title)) return "influence-loss";
+  if (title === "ELIMINATING ANOTHER PLAYER") return "successful-elimination";
+  if (title.startsWith("WHEN ")) return "action-follow-up";
+
+  return "character-actions";
+}
+
+function withVoiceLayer(group, layerId) {
+  return group ? { ...group, layerId } : null;
 }
 
 function renderLineGroup(group, open) {
@@ -1354,6 +1594,23 @@ function loadLinePools() {
 
 function saveLinePools() {
   localStorage.setItem("coup-line-pools", JSON.stringify(state.linePools));
+}
+
+function loadVisibleVoiceLayers() {
+  const fallback = Object.fromEntries(VOICE_LINE_LAYER_IDS.map((id) => [id, DEFAULT_VISIBLE_VOICE_LAYER_IDS.has(id)]));
+  try {
+    const stored = JSON.parse(localStorage.getItem(VOICE_LAYER_STORAGE_KEY) || "{}");
+    return {
+      ...fallback,
+      ...Object.fromEntries(VOICE_LINE_LAYER_IDS.map((id) => [id, typeof stored[id] === "boolean" ? stored[id] : fallback[id]])),
+    };
+  } catch {
+    return fallback;
+  }
+}
+
+function saveVisibleVoiceLayers() {
+  localStorage.setItem(VOICE_LAYER_STORAGE_KEY, JSON.stringify(state.visibleVoiceLayers));
 }
 
 function parseVoiceLines(text) {

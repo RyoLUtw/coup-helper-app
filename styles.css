@@ -312,6 +312,78 @@ details.menu-card {
   margin-bottom: 16px;
 }
 
+.settings-section {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.settings-section summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.settings-section summary::-webkit-details-marker {
+  display: none;
+}
+
+.settings-section summary::after {
+  content: "+";
+  color: var(--green);
+  font-weight: 900;
+}
+
+.settings-section[open] summary::after {
+  content: "-";
+}
+
+.settings-section summary span {
+  display: grid;
+  gap: 4px;
+}
+
+.settings-section summary small {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.voice-layer-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.settings-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.layer-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-strong);
+}
+
+.layer-toggle span {
+  display: grid;
+  gap: 4px;
+}
+
+.layer-toggle small {
+  color: var(--muted);
+  font-weight: 700;
+}
+
 .player-count-row,
 .modal-actions {
   display: flex;
@@ -401,6 +473,33 @@ details.menu-card {
   line-height: 1.05;
 }
 
+.target-picker {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.target-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.target-option {
+  min-height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-strong);
+  color: var(--ink);
+  font-weight: 900;
+}
+
+.target-option.selected {
+  border-color: var(--green);
+  background: #e4efe9;
+  color: #205d4c;
+}
+
 .sticky-actions {
   position: sticky;
   bottom: -18px;
@@ -480,6 +579,11 @@ details.menu-card {
   padding: 6px 10px;
   font-size: 0.9rem;
   font-weight: 800;
+}
+
+.settings-content {
+  overflow: auto;
+  min-height: 0;
 }
 
 .toggle-row {
